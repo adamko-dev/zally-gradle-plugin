@@ -42,6 +42,12 @@ tasks.wrapper {
   distributionType = Wrapper.DistributionType.ALL
 }
 
+kotlin {
+  jvmToolchain {
+    (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(11))
+  }
+}
+
 tasks.withType<KotlinCompile>().configureEach {
   kotlinOptions {
     this.freeCompilerArgs += listOf(
