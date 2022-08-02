@@ -19,7 +19,7 @@ abstract class ZallyPlugin : Plugin<Project> {
     extensions.create<ZallySettings>(ZALLY_GRADLE_SETTINGS_NAME).apply {
       enabled.convention(true)
       disabledRules.convention(listOf(
-        "",
+        "PathParameterRule",
       ))
     }
 

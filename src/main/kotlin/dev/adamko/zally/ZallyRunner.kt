@@ -10,6 +10,8 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
 import kotlin.io.path.invariantSeparatorsPathString
+import org.gradle.api.logging.Logger
+import org.gradle.api.logging.Logging
 import org.zalando.zally.core.CheckDetails
 import org.zalando.zally.core.DefaultContext
 import org.zalando.zally.core.JsonPointerLocator
@@ -24,12 +26,14 @@ import org.zalando.zally.rule.api.Violation
 // translated from https://github.com/ethlo/zally-maven-plugin/blob/8c4830a27759793d5772bc1e873a5520edc7a463/src/main/java/com/ethlo/zally/ZallyRunner.java
 class ZallyRunner(ruleConfigs: Config) {
 
+  private val logger: Logger = Logging.getLogger(this::class.java)
+
   private val ruleClasses: List<Class<*>> = loadRuleClasses()
 
   private val rules: List<RuleDetails> =
     ruleClasses.map { ruleClass ->
       val simpleName = ruleClass.simpleName
-      println("Loading rule $simpleName")
+      logger.debug("Loading rule $simpleName")
       val instance = createRuleInstance(ruleClass, ruleConfigs)
       val ruleAnnotation = ruleClass.getAnnotation(Rule::class.java)
       RuleDetails(
@@ -154,8 +158,7 @@ class ZallyRunner(ruleConfigs: Config) {
     val locator = try {
       JsonPointerLocator(Files.readString(Paths.get(url)))
     } catch (e: IOException) {
-      println("WARN Could not read File")
-      e.printStackTrace()
+      logger.warn("Could not read File $url - ${e.message}")
       JsonPointerLocator("")
     }
     return Result(

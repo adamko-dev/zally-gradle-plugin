@@ -27,7 +27,9 @@ plugins {
 }
 
 zally {
-  openApiSpec.set("path/to/openapi.yml")
+  openApiSpec.set(
+    layout.projectDirectory.file("src/main/resources/static/docs/redoc/openapi.yml")
+  )
 }
 ```
 
