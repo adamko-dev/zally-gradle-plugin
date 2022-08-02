@@ -1,5 +1,8 @@
 rootProject.name = "zally-gradle-plugin"
 
+include(
+  ":plugin-marker"
+)
 
 dependencyResolutionManagement {
 
@@ -18,3 +21,5 @@ dependencyResolutionManagement {
   @Suppress("UnstableApiUsage") // centralised repositories are incubating
   repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
 }
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

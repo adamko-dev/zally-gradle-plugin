@@ -58,7 +58,7 @@ tasks.withType<KotlinCompile>().configureEach {
 
 publishing {
   repositories {
-    maven(file("build/maven-internal")) {
+    maven(file("$rootDir/build/maven-internal")) {
       name = "ProjectLocalDir"
     }
   }
