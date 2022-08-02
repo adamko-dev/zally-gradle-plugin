@@ -8,7 +8,8 @@ plugins {
   `maven-publish`
 }
 
-group = "dev.adamko.zally"
+//group = "dev.adamko.zally"
+group = "com.github.adamko-dev.zally-gradle-plugin"
 version = "0.0.1-SNAPSHOT"
 
 dependencies {
@@ -28,12 +29,12 @@ dependencies {
 
 gradlePlugin {
   plugins {
-    create("zally") {
-      id = "dev.adamko.zally"
-      displayName = "Zally OpenAPI Validator (unofficial Gradle Plugin"
-      description = "A minimalistic, simple-to-use OpenAPI 2 and 3 linter"
-      implementationClass = "dev.adamko.zally.ZallyPlugin"
-    }
+//    create("zally") {
+//      id = "dev.adamko.zally"
+//      displayName = "Zally OpenAPI Validator (unofficial Gradle Plugin"
+//      description = "A minimalistic, simple-to-use OpenAPI 2 and 3 linter"
+//      implementationClass = "dev.adamko.zally.ZallyPlugin"
+//    }
     create("zally-jitpack") {
       id = "com.github.adamko-dev.zally-gradle-plugin"
       displayName = "Zally OpenAPI Validator (unofficial Gradle Plugin"
