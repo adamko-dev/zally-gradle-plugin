@@ -4,7 +4,12 @@ plugins {
   kotlin("jvm") version embeddedKotlinVersion
   `kotlin-dsl`
   `java-gradle-plugin`
+
+  `maven-publish`
 }
+
+group = "dev.adamko.zally"
+version = "0.0.1-SNAPSHOT"
 
 dependencies {
   implementation(platform(kotlin("bom")))
@@ -42,5 +47,19 @@ tasks.withType<KotlinCompile>().configureEach {
     this.freeCompilerArgs += listOf(
       "-Xopt-in=kotlin.io.path.ExperimentalPathApi",
     )
+  }
+}
+
+publishing {
+  repositories {
+    maven(file("build/maven-internal")) {
+      name = "ProjectLocalDir"
+    }
+  }
+
+  publications {
+    create<MavenPublication>("mavenJava") {
+      from(components["java"])
+    }
   }
 }
