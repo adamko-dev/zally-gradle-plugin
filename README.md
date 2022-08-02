@@ -9,26 +9,27 @@ The Zally Gradle plugin is based on the
 
 **This project is unfinished**. I'm sharing the work so far to get the ball rolling.
 
-### Example
-
-Here's how it should work...
+### Setup
 
 ```kotlin
 // build.gradle.kts
 
 buildscript {
   repositories {
+    mavenCentral()
+    gradlePluginPortal()
     maven("https://jitpack.io")
   }
 }
 
 plugins {
-  id("dev.adamko.zally")
+//  id("dev.adamko.zally")
+  id("com.github.adamko-dev.zally-gradle-plugin") version "main-SNAPSHOT"
 }
 
 zally {
   openApiSpec.set(
-    layout.projectDirectory.file("src/main/resources/static/docs/redoc/openapi.yml")
+    layout.projectDirectory.file("src/main/resources/openapi.yml")
   )
 }
 ```

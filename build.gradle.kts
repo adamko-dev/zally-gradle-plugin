@@ -62,6 +62,10 @@ tasks.withType<KotlinCompile>().configureEach {
   }
 }
 
+java {
+  withSourcesJar()
+}
+
 publishing {
   repositories {
     maven(file("$rootDir/build/maven-internal")) {

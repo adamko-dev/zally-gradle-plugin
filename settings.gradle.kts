@@ -1,7 +1,7 @@
 rootProject.name = "zally-gradle-plugin"
 
 include(
-  ":plugin-marker"
+//  ":plugin-marker"
 )
 
 dependencyResolutionManagement {
