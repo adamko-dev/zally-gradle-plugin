@@ -4,7 +4,7 @@ plugins {
   `maven-publish`
 }
 
-group = "dev.adamko.zally"
+group = "com.github.adamko-dev.zally-gradle-plugin"
 version = "0.0.1-SNAPSHOT"
 
 dependencies {
